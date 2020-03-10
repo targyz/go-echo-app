@@ -21,6 +21,10 @@ func main() {
 	router := gin.Default()
 
 	router.LoadHTMLGlob("templates/*")
+	router.GET("/health", func(c *gin.Context) {
+		c.Status(http.StatusOK)
+		return
+	})
 	router.GET("/", handleIndex)
 
 	err := router.Run()
